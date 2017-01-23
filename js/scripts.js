@@ -8,6 +8,10 @@ function Contact(first, last, street, city, state) {
   this.state = state;
 };
 
+Contact.prototype.fullName = function() {
+  return this.firstName + " " + this.lastName;
+};
+
 //*****FRONT-END*****
 
 $(document).ready(function() {
@@ -21,7 +25,7 @@ $(document).ready(function() {
     var inputState = $("#state").val();
     var newContact = new Contact(inputFirstName, inputLastName, inputStreet, inputCity, inputState);
 
-    $("#contact_list").show().append("<li>" + "<span class=\"contact\">" + newContact.firstName + " " + newContact.lastName + "</li>");
+    $("#contact_list").show().append("<li>" + "<span class=\"contact\">" + newContact.fullName + "</li>");
 
     $(".contact").last().click(function() {
       $(".first_name").text(newContact.firstName);
